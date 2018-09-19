@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Notificator } from '../../shared/components/notificator';
 
 @Component({
     selector: 'pf-login',
@@ -35,6 +36,11 @@ export class LoginComponent implements OnInit {
     signIn(value) {
         this.auth.loginUser(value).subscribe((data: any) => {
             this.errorMessage = '';
+            Notificator.emit({
+                severity: 'success',
+                summary: 'Success!',
+                detail: 'You have successfully logged in.'
+            });
             this.router.navigate(['/post-feed']);
         }, e => {
             this.errorMessage = e.error.message;

@@ -23,6 +23,11 @@
     <p class="mt-3 mb-2 text-muted">
         <a [routerLink]="['/register']">Dont't have account?</a>
     </p>
+    <div class="text-muted font-weight-light font-italic">
+        <a [routerLink]="['/forgot-password']" style="font-size: 0.8em">
+            Forgot Password?
+        </a>
+    </div>
 </form>
 
 <div *ngIf="errorMessage" style="color:red;text-align: center;width:100%;">{{errorMessage}}</div>
