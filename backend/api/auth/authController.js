@@ -5,8 +5,7 @@ var bcrypt = require('bcrypt-nodejs')
 
 let register = async (req, res) => {
     const {
-        email,
-        password
+        email
     } = req.body    
 
     // check for existing email
