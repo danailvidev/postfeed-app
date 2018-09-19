@@ -4,6 +4,7 @@
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
+    flex-direction: column;
     -ms-flex-align: center;
     -ms-flex-pack: center;
     -webkit-box-align: center;
@@ -38,14 +39,13 @@
     z-index: 2;
 }
 
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
+show-errors {
+    display: none;
+    position: absolute;
+    width: 220px;
+    left: 300px;
+    top: 0;
+    &.show {
+      display: block;
+    }
+  }

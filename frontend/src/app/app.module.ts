@@ -6,6 +6,12 @@ import { AppComponent } from './app.component';
 // Modules
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+
+// ngxs
+// import { NgxsModule } from '@ngxs/store';
+// import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+// import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 @NgModule({
   declarations: [
@@ -15,7 +21,11 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    CoreModule
+    // NgxsModule.forRoot(),
+    // NgxsReduxDevtoolsPluginModule.forRoot(),
+    // NgxsLoggerPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

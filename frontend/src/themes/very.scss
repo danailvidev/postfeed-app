@@ -1,0 +1,11 @@
+@import './_very-variables';
+
+.btn-primary {
+    color: #fff;
+    background-color: $base-color;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: $second-color;
+}
