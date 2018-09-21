@@ -11,7 +11,15 @@ export class AuthService {
     baseAuthUrl = environment.backend['baseUrl'] + 'auth/';
     TOKEN_KEY = 'token';
     DATA_KEY = 'userInfo';
-    userData: any;
+    private _userData: any;
+
+    get userData(): any {
+        return this._userData;
+    }
+
+    set userData(value: any) {
+        this._userData = value;
+    }
 
     constructor(
         private http: HttpClient) { }

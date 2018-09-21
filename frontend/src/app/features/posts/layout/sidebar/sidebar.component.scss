@@ -1,3 +1,5 @@
+@import './../../../../../themes/very.scss';
+
 :host {
     min-width: 250px;
     max-width: 250px;
@@ -7,16 +9,12 @@
     left: 0;
     /* top layer */
     z-index: 9999;
-    background: #419c9b;
+    background: $keppel;
     color: #fff;
     transition: all 0.3s;
     #sidebar {
         padding-top: 20px;
         text-align: center;
-        > ul > li {
-            box-shadow: 0px 1px 3px rgba(0,0,0,.4);
-            padding: 4px;
-        }
     }
     .sidebar-footer {
         position: absolute;

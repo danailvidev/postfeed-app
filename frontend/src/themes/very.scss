@@ -2,14 +2,19 @@
 
 .btn-primary {
     color: #fff;
-    background-color: $base-color;
+    background-color: $keppel;
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: $second-color;
+    background-color: $eton-blue;
 }
 
 body a {
     color: #fff;
+}
+
+body a:hover {
+    background-color: $japanese-indigo;
+    text-decoration: none;
 }

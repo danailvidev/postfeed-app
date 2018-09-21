@@ -1,0 +1,14 @@
+@import './../../../../../themes/very.scss';
+
+form {
+    background: $pale-silver;
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    button {
+        margin: 9px;
+        margin-top: 0;
+    }
+}
