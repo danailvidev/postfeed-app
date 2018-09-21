@@ -15,6 +15,10 @@ body a {
 }
 
 body a:hover {
-    background-color: $japanese-indigo;
+    color: $japanese-indigo;
     text-decoration: none;
+}
+
+body a.active {
+    color: $japanese-indigo;
 }
