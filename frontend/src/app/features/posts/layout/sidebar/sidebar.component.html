@@ -2,12 +2,18 @@
     <div class="sidebar-header">
         <h3> Very Connect</h3>
     </div>
-    <div *ngFor="let item of menuItems">
-        <a [routerLink]="[item.link]" routerLinkActive="active">
-            <i class="{{item.icon}}"></i>
-            <span matLine>{{item.label}}</span>
-        </a>
+    <div class="text-left pl-5 ml-3">
+        <div class="avatar">
+            Hello, {{user.email}}
+        </div>
+        <div *ngFor="let item of menuItems">
+            <a [routerLink]="[item.link]" routerLinkActive="active">
+                <i class="{{item.icon}}"></i>
+                <span matLine>{{item.label}}</span>
+            </a>
+        </div>
     </div>
+
 
 
     <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
