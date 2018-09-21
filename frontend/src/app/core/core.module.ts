@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Service
 import { AuthService } from '../auth/auth.service';
 import { ResponseInterceptor } from './response.interceptor';
+import { AuthInterceptor } from './auth.interceptor';
 
 // Guards
 import { AuthGuard } from '../auth/auth.guard';
@@ -21,6 +22,7 @@ import { EnsureModuleLoadedOnceGuard } from '../shared/module-import-guard';
     providers: [
         AuthService,
         AuthGuard,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
     ]
 })
