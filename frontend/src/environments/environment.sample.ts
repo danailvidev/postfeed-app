@@ -5,16 +5,18 @@ const packageJson = require('../../package.json');
 
 export const environment = {
     production: false,
-    versions: {
-        app: packageJson.version,
-        angular: packageJson.dependencies['@angular/core'],
-        angularCli: packageJson.devDependencies['@angular/cli'],
-        typescript: packageJson.devDependencies['typescript']
-    },
+    versions: packageJson.dependencies,
     backend: {
         baseUrl: 'http://localhost:3000/api/'
     },
-    SOCKET_SERVER_URL: 'http://localhost:3000'
+    SOCKET_SERVER_URL: 'http://localhost:3000',
+    defaultPagination: {
+        resultsPerPageOptions: [5, 10, 25, 50, 100],
+        defaultResultsPerPage: 5,
+        visiblePageLinks: 5
+      },
+      maxAutocompleteItems : 25,
+      maxDropdownItems: 25,
 };
 
 /*

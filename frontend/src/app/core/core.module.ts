@@ -1,9 +1,10 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Service
 import { AuthService } from '../auth/auth.service';
+import { ResponseInterceptor } from './response.interceptor';
 
 // Guards
 import { AuthGuard } from '../auth/auth.guard';
@@ -19,7 +20,8 @@ import { EnsureModuleLoadedOnceGuard } from '../shared/module-import-guard';
     declarations: [],
     providers: [
         AuthService,
-        AuthGuard
+        AuthGuard,
+        { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
     ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {

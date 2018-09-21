@@ -1,8 +1,8 @@
 <div class="container">
-    <form class="text-right mt-4">
-      <div class="form-group" style="padding: 10px;">
-        <textarea class="form-control" rows="3"  name="text" placeholder="What's on your mind, {{ user.email}}"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Post</button>
+    <form class="shadow text-right mt-4" role="form" onsubmit="return false;">
+        <div class="form-group" style="padding: 10px;">
+            <textarea class="form-control" rows="3" #postMsg name="text" placeholder="What's on your mind, {{ user.email}}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="save(postMsg.value);postMsg.value=''">Post</button>
     </form>
-  </div>
+</div>

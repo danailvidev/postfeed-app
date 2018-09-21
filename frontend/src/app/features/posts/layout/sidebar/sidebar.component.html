@@ -8,7 +8,7 @@
         </div>
         <div *ngFor="let item of menuItems">
             <a [routerLink]="[item.link]" routerLinkActive="active">
-                <i class="{{item.icon}}"></i>
+                <i class="{{item.icon}}" style="width:35px;text-align: center;"></i>
                 <span matLine>{{item.label}}</span>
             </a>
         </div>
