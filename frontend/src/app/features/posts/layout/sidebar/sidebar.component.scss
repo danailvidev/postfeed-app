@@ -12,26 +12,43 @@
     background: $keppel;
     color: #fff;
     transition: all 0.3s;
+
     #sidebar {
         padding-top: 20px;
         text-align: center;
-        a {
-            color: #fff;
-            &:hover {
-                color: $pale-silver;
-            }
-            &.active {
-                color: $japanese-indigo;
+
+        div {
+            padding: 4px;
+
+            a {
+                color: #fff;
+                width: 100%;
+                height: 100%;
+                display: block;
+                font-size: 20px;
+
+                &:hover {
+                    color: $eton-blue;
+                    text-decoration: none;
+                }
+
+                &.active {
+                    background: #c8d5b9;
+                    color: $japanese-indigo;
+                }
             }
         }
+
     }
+
     .sidebar-footer {
         position: absolute;
         bottom: 0;
         text-align: center;
         width: 100%;
-        box-shadow: 0px 3px 10px rgba(0,0,0,.8);
-        > a {
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, .8);
+
+        >a {
             display: block;
             width: 100%;
         }
