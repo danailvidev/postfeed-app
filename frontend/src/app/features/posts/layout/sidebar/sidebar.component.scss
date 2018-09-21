@@ -15,6 +15,15 @@
     #sidebar {
         padding-top: 20px;
         text-align: center;
+        a {
+            color: #fff;
+            &:hover {
+                color: $pale-silver;
+            }
+            &.active {
+                color: $japanese-indigo;
+            }
+        }
     }
     .sidebar-footer {
         position: absolute;
