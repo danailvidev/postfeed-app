@@ -63,12 +63,13 @@ let login = async (req, res) => {
 
 function createSendToken(res, user) {
     var payload = {
-        sub: user._id
+        sub: user._id,
+        email: user.email
     }
 
     var token = jwt.encode(payload, config.bcryptSecret)
     const userData = {
-        email: user.email,
+        userEmail: user.email,
         userId: user._id
     }
 
@@ -97,6 +98,7 @@ let checkAuthenticated = (req, res, next) => {
     }
 
     req.userId = payload.sub
+    req.userEmail = payload.email
 
     next()
 }

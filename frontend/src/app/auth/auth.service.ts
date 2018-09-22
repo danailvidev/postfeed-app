@@ -11,6 +11,9 @@ export class AuthService {
     baseAuthUrl = environment.backend['baseUrl'] + 'auth/';
     TOKEN_KEY = 'token';
     DATA_KEY = 'userInfo';
+    headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    options = new HttpResponse({ headers: this.headers });
+
     private _userData: any;
 
     get userData(): any {
@@ -42,15 +45,13 @@ export class AuthService {
     loginUser(userData): Observable<any> {
         this.userData = null;
         const body = userData;
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const options = new HttpResponse({ headers: headers });
         return this.http.post<any>(this.baseAuthUrl + 'login', userData).pipe(map(res => {
             this.userData = res.userData;
             this.saveUserData(res.userData);
             this.saveToken(res.token);
             return true;
         }, (err) => {
-            return false;
+            return this.handleError(err);
         }));
     }
 
@@ -71,14 +72,12 @@ export class AuthService {
     registerUser(userData): Observable<any> {
         this.userData = null;
         const body = userData;
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const options = new HttpResponse({ headers: headers });
-        return this.http.post<any>(this.baseAuthUrl + 'register', body, options).pipe(map(res => {
+        return this.http.post<any>(this.baseAuthUrl + 'register', body, this.options).pipe(map(res => {
             this.saveToken(res.token);
             this.saveUserData(res.userData);
             return true;
         }, (err) => {
-            return err;
+            return this.handleError(err);
         }));
     }
 
@@ -103,5 +102,4 @@ export class AuthService {
         }
         return Observable.throw(error || 'json server error');
     }
-
 }

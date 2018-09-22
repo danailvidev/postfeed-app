@@ -23,13 +23,19 @@ export class PostCreateComponent extends AbstractEditComponent<PostModel> implem
         elRef: ElementRef,
         private auth: AuthService,
         svc: PostsService) {
-            super(elRef, svc);
-         }
+        super(elRef, svc);
+    }
 
     ngOnInit() {
         super.ngOnInit();
         this.auth.userInfo().subscribe(data => {
             this.user = data;
         });
+    }
+
+    protected save(text: any) {
+        let post = new PostModel();
+        post.content = text;
+        super.save(post);
     }
 }

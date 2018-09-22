@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostModel } from './post.model';
+import { PostsService } from './posts.service';
 
 @Component({
     selector: 'pf-posts-list',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PostsListComponent implements OnInit {
-    constructor() { }
+    posts: Array<PostModel> = [];
+    constructor(private svc: PostsService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.svc.fetchPagedList({}).subscribe(res => {
+            this.posts = res;
+        }, err => {
+            console.log(err);
+        });
+    }
 }

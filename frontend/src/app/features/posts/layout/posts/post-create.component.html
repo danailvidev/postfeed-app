@@ -1,8 +1,10 @@
 <div class="container">
-    <form class="shadow text-right mt-4" role="form" onsubmit="return false;">
+    <form class="card text-right mt-4" role="form" onsubmit="return false;">
         <div class="form-group" style="padding: 10px;">
-            <textarea class="form-control" rows="3" #postMsg name="text" placeholder="What's on your mind, {{ user.email}}"></textarea>
+            <textarea class="form-control" rows="3" #postMsg name="text" placeholder="What's on your mind, {{ user.userEmail}}"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="save(postMsg.value);postMsg.value=''">Post</button>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="save(postMsg.value);postMsg.value=''">Post</button>
+        </div>
     </form>
 </div>

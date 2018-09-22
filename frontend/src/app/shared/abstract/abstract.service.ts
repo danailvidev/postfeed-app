@@ -13,6 +13,7 @@ export abstract class AbstractService<T extends AbstractModel> {
     public readonly modelDeleted: EventEmitter<T> = new EventEmitter();
 
     protected abstract readonly serviceUrl: string;
+    protected baseUrl = env.backend['baseUrl'];
 
     protected defaultHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     protected defaultOptions = new HttpResponse({ headers: this.defaultHeaders });
@@ -117,6 +118,6 @@ export abstract class AbstractService<T extends AbstractModel> {
     }
 
     public getEndpoint(): string {
-        return this.serviceUrl;
+        return this.baseUrl + this.serviceUrl;
     }
 }
