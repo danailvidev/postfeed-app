@@ -3,7 +3,7 @@ import { AuthService } from '@app/auth/auth.service';
 import { UserModel } from '@app/auth/user.model';
 import { PostsService } from './posts.service';
 import { PostModel } from './post.model';
-import { AbstractEditComponent } from '../../../../shared/abstract/abstract-edit.component';
+import { AbstractEditComponent } from '../../../shared/abstract/abstract-edit.component';
 
 @Component({
     selector: 'pf-post-create',

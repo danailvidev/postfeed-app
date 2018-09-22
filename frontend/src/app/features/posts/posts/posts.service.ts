@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { AbstractService } from '../../../../shared/abstract/abstract.service';
-import { PostModel } from '@app/features/posts/layout/posts/post.model';
+import { AbstractService } from '../../../shared/abstract/abstract.service';
+import { PostModel } from './post.model';
 
 @Injectable({
     providedIn: 'root'
