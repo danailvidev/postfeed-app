@@ -2,8 +2,8 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { PostCreateComponent } from './posts/post-create.component';
-import { PostsListComponent } from './posts/posts-list.component';
+import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { PostsListComponent } from './posts/post-list/posts-list.component';
 import { AuthGuard } from '@app/auth/auth.guard';
 import { PostsWrapperComponent } from './posts/post-wrapper.component';
 

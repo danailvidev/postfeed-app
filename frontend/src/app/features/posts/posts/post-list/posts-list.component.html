@@ -1,0 +1,56 @@
+<div class="container mt-2">
+    <div *ngFor="let item of posts" class="card mt-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="https://placehold.it/35" class="rounded-circle" />
+
+                </div>
+                <div class="col-md-11">
+                    <div>
+                        <a class="float-left mr-2" [routerLink]="['/user', item.createdBy.id]">
+                            <strong>{{item.createdBy.email}}</strong>
+                        </a>
+                        <span class="text-secondary" title="Date created">{{item.createdAt | date:'MMM d, y, h:mm:ss
+                            a'}}</span>
+                        <span class="float-right text-muted">4 comments</span>
+                    </div>
+
+                    <div>
+                        <small><a [routerLink]="['.']">Like</a> · <a [routerLink]="['.']">Share</a> · <a [routerLink]="['.']">Follow</a></small>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <p>{{item.content}}</p>
+                </div>
+            </div>
+            <div>
+                <div class="comments-list pl-3">
+                    <div class="media">
+                        <div class="date">
+                            <span class="float-right"><small>5 days ago</small></span>
+                        </div>
+                        <a class="media-left" [routerLink]="['user', item.createdBy.id]">
+                            <img class="rounded-circle" src="http://placehold.it/35">
+                        </a>
+
+                        <div class="media-body">
+
+                            <a class="media-heading user_name" [routerLink]="['user', item.createdBy.id]">Baltej Singh</a>
+                            Wow! this is really great.
+
+                            <p><small><a [routerLink]="['.']">Like</a> · <a [routerLink]="['.']">Share</a></small></p>
+                        </div>
+                    </div>
+
+                    <form class="form-inline">
+                        <label class="sr-only" for="inlineFormInput">Name</label>
+                        <input type="text" #comment class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Write a comment...">
+                        <button type="submit" class="btn btn-primary" (click)="addComment(item, comment.value)">Comment</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

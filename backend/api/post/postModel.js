@@ -13,5 +13,6 @@ module.exports = mongoose.model('Post', {
         type: Date,
         required: true,
         default: new Date()
-    }
+    },
+    comments: Array
 })

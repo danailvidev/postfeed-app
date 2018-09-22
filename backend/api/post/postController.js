@@ -2,12 +2,12 @@ var Post = require('./postModel.js')
 
 const params = async (req, res, next) => {
     try {
-        let id = req.body.id
-        let message = await Message.findById(id)
-        if (!message) {
-            next(new Error('No message with that id'))
+        let id = req.params.id
+        let post = await Post.findById(id)
+        if (!post) {
+            next(new Error('No post with that id'))
         } else {
-            req.message = message;
+            req.post = post;
             next()
         }
     } catch (err) {
@@ -39,6 +39,28 @@ const deleteOne = async (req, res) => {
     }
 }
 
+const postComment = async (req, res) => {
+    try {
+        
+        var post = req.post
+
+        console.log(req.body)
+        console.log(post)
+        res.status(200).send(post)
+
+        // { createdBy: { id: 5ba26681c0563c67a3713ef9, email: '1@1' },
+        // createdAt: 2018-09-22T15:51:31.436Z,
+        // comments: [],
+        // _id: 5ba6652821e74a7725ec6187,
+        // content: 'dsadsadas',
+        // __v: 0 }
+
+        // TODO: insert comment
+    } catch (error) {
+        res.sendStatus(500)
+    }
+}
+
 const post = (req, res) => {
     var postData = req.body
 
@@ -47,7 +69,7 @@ const post = (req, res) => {
     postData.createdBy.email = req.userEmail
 
     var post = new Post(postData)
-    
+
     post.save((err, results) => {
         if (err) {
             console.error('saving post error')
@@ -63,11 +85,12 @@ const post = (req, res) => {
     })
 }
 
-var userController = {
+var postController = {
     params,
     get,
     deleteOne,
-    post
+    post,
+    postComment
 }
 
-module.exports = userController
+module.exports = postController

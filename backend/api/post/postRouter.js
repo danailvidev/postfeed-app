@@ -5,6 +5,9 @@ var postRouter = express.Router()
 
 postRouter.param('id', controller.params)
 
+postRouter.route('/:id/comment')
+    .post(authController.checkAuthenticated, controller.postComment)
+
 postRouter.route('/:id')
     .delete(authController.checkAuthenticated, controller.deleteOne)
 

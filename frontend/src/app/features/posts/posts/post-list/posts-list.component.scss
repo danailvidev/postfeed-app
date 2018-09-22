@@ -1,0 +1,17 @@
+.media {
+    position: relative;
+    padding-top: 10px;
+    .date {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .user_name{
+        font-size:14px;
+        font-weight: bold;
+    }
+    .comments-list .media{
+        border-top: 1px dotted #ccc;
+    }
+}
+
