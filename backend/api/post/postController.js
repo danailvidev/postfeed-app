@@ -48,6 +48,7 @@ const postComment = async (req, res) => {
         comment.createdBy = {}
         comment.createdBy.id = req.userId
         comment.createdBy.email = req.userEmail
+        comment.createdAt = req.body.createdAt
         
         post.comments.push(comment)
 

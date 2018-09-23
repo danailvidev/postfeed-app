@@ -36,7 +36,9 @@
 
                         <div class="media-body">
 
-                            <a class="media-heading user_name" [routerLink]="['user', item.createdBy.id]">{{comment.createdBy.email}}</a>
+                            <a class="media-heading user_name" [routerLink]="['user', item.createdBy.id]">
+                                {{comment.createdBy.email}}
+                            </a>
                             {{comment.content}}
 
                             <p><small><a [routerLink]="['.']">Like</a> · <a [routerLink]="['.']">Share</a></small></p>
@@ -45,8 +47,11 @@
 
                     <form class="form-inline">
                         <label class="sr-only" for="inlineFormInput">Name</label>
-                        <input type="text" #comment class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Write a comment...">
-                        <button type="submit" class="btn btn-primary" (click)="addComment(item, comment.value)">Comment</button>
+                        <input type="text" #comment class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput"
+                            placeholder="Write a comment...">
+                        <button type="submit" class="btn btn-primary" (click)="addComment(item, comment.value)">
+                            Comment
+                        </button>
                     </form>
                 </div>
 
