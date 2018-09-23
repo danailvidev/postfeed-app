@@ -1,5 +1,5 @@
 <div class="container mt-2">
-    <div *ngFor="let item of posts" class="card mt-2">
+    <div *ngFor="let item of posts;let i = index" class="card mt-2">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-1">
@@ -11,9 +11,9 @@
                         <a class="float-left mr-2" [routerLink]="['/user', item.createdBy.id]">
                             <strong>{{item.createdBy.email}}</strong>
                         </a>
-                        <span class="text-secondary" title="Date created">{{item.createdAt | date:'MMM d, y, h:mm:ss
-                            a'}}</span>
-                        <span class="float-right text-muted">4 comments</span>
+                        <span class="text-secondary" title="Date created">{{item.createdAt | timeAgo}}</span>
+                        <i class="float-right fa fa-arrow-up pl-2" title="collapse"></i>
+                        <span class="float-right text-muted">{{item.comments?.length}} comments</span>
                     </div>
 
                     <div>
@@ -26,9 +26,9 @@
             </div>
             <div>
                 <div class="comments-list pl-3">
-                    <div class="media">
+                    <div *ngFor="let comment of item.comments" class="media">
                         <div class="date">
-                            <span class="float-right"><small>5 days ago</small></span>
+                            <span class="float-right"><small>{{comment.createdAt | timeAgo}}</small></span>
                         </div>
                         <a class="media-left" [routerLink]="['user', item.createdBy.id]">
                             <img class="rounded-circle" src="http://placehold.it/35">
@@ -36,8 +36,8 @@
 
                         <div class="media-body">
 
-                            <a class="media-heading user_name" [routerLink]="['user', item.createdBy.id]">Baltej Singh</a>
-                            Wow! this is really great.
+                            <a class="media-heading user_name" [routerLink]="['user', item.createdBy.id]">{{comment.createdBy.email}}</a>
+                            {{comment.content}}
 
                             <p><small><a [routerLink]="['.']">Like</a> · <a [routerLink]="['.']">Share</a></small></p>
                         </div>

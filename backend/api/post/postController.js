@@ -17,7 +17,7 @@ const params = async (req, res, next) => {
 
 const get = async (req, res) => {
     try {
-        let posts = await Post.find({}, '-__v -hash') // remove unwanted props
+        let posts = await Post.find({}, '-__v -hash').sort({createdAt: 'desc'}) // remove unwanted props
         if (posts) {
             res.send(posts)
         } else {
@@ -40,25 +40,30 @@ const deleteOne = async (req, res) => {
 }
 
 const postComment = async (req, res) => {
-    try {
+
+        let post = req.post
+
+        let comment = {}
+        comment.content = req.body.content
+        comment.createdBy = {}
+        comment.createdBy.id = req.userId
+        comment.createdBy.email = req.userEmail
         
-        var post = req.post
+        post.comments.push(comment)
 
-        console.log(req.body)
-        console.log(post)
-        res.status(200).send(post)
-
-        // { createdBy: { id: 5ba26681c0563c67a3713ef9, email: '1@1' },
-        // createdAt: 2018-09-22T15:51:31.436Z,
-        // comments: [],
-        // _id: 5ba6652821e74a7725ec6187,
-        // content: 'dsadsadas',
-        // __v: 0 }
-
-        // TODO: insert comment
-    } catch (error) {
-        res.sendStatus(500)
-    }
+        post.save((err, results) => {
+            if (err) {
+                console.error('saving post error')
+                return res.status(500).send({
+                    message: 'saving post error'
+                })
+            } else {
+                res.status(200).send({
+                    result: true,
+                    id: results._id
+                })
+            }
+        })
 }
 
 const post = (req, res) => {

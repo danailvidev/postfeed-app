@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostModel } from '../post.model';
 import { PostsService } from '../posts.service';
-
-export class CommentModel {
-    content: string;
-    createdBy: {
-        userId: string;
-        userEmail: string;
-    };
-    createdAt: Date;
-}
+import { CommentsService } from '../comments/comment.service';
 
 @Component({
     selector: 'pf-posts-list',
@@ -19,20 +11,22 @@ export class CommentModel {
 export class PostsListComponent implements OnInit {
     posts: Array<PostModel> = [];
     constructor(
-        private svc: PostsService) { }
+        private svc: PostsService,
+        private commentSvc: CommentsService) { }
 
     ngOnInit() {
+        this.getPosts();
+    }
+
+    addComment(post, text) {
+        this.commentSvc.saveComment(post, text);
+    }
+
+    private getPosts() {
         this.svc.fetchPagedList({}).subscribe(res => {
             this.posts = res;
         }, err => {
             console.log(err);
         });
-    }
-
-    addComment(post, text) {
-        let comment = new CommentModel();
-        comment.content = text;
-        console.log(post, comment);
-        this.svc.saveComment(post, comment);
     }
 }

@@ -12,11 +12,4 @@ export class PostsService extends AbstractService<PostModel> {
     constructor(protected http: HttpClient) {
         super(http);
     }
-
-    public saveComment(post, comment): any {
-        const endpoint = `http://localhost:3000/api/post/${post._id}/comment`;
-        this.http.post<any>(endpoint, comment, this.defaultOptions).subscribe((res: any) => {
-            console.log(res);
-        });
-    }
 }

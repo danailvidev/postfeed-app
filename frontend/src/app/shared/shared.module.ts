@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // third
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/primeng';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 // components
 import { FormErrorsComponent } from './components/form-errors.component';
@@ -23,9 +24,10 @@ import { FormErrorsComponent } from './components/form-errors.component';
         ToastModule,
 
         // components
-        FormErrorsComponent
+        FormErrorsComponent,
+        TimeAgoPipe
     ],
-    declarations: [FormErrorsComponent],
+    declarations: [FormErrorsComponent, TimeAgoPipe],
     providers: [
         MessageService
     ]
