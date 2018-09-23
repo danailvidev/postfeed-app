@@ -46,8 +46,8 @@ const postComment = async (req, res) => {
         let comment = {}
         comment.content = req.body.content
         comment.createdBy = {}
-        comment.createdBy.id = req.userId
-        comment.createdBy.email = req.userEmail
+        comment.createdBy.id = req.id
+        comment.createdBy.email = req.email
         comment.createdAt = req.body.createdAt
         
         post.comments.push(comment)
@@ -71,8 +71,8 @@ const post = (req, res) => {
     var postData = req.body
 
     postData.createdBy = {}
-    postData.createdBy.id = req.userId
-    postData.createdBy.email = req.userEmail
+    postData.createdBy.id = req.id
+    postData.createdBy.email = req.email
 
     var post = new Post(postData)
 
@@ -91,12 +91,23 @@ const post = (req, res) => {
     })
 }
 
+const saveThroughSocket = (postData) => {
+    var post = new Post(postData)
+    post.save((err, results) => {
+        if (err) {
+            // TODO: log the error in db
+            console.log('saving msg error', err)
+        } 
+    })
+}
+
 var postController = {
     params,
     get,
     deleteOne,
     post,
-    postComment
+    postComment,
+    saveThroughSocket
 }
 
 module.exports = postController

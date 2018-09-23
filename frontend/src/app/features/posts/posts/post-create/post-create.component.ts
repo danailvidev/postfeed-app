@@ -16,6 +16,7 @@ export class PostCreateComponent extends AbstractEditComponent<PostModel> implem
     public get onAdd(): EventEmitter<PostModel> {
         return this.svc.modelAdded;
     }
+    @Output() emitNewPost = new EventEmitter();
 
     user: UserModel;
 
@@ -33,9 +34,14 @@ export class PostCreateComponent extends AbstractEditComponent<PostModel> implem
         });
     }
 
-    protected save(text: any) {
+    emitedNewPost(message) {
         let post = new PostModel();
-        post.content = text;
-        super.save(post);
+        post.content = message;
+        post.createdBy = {
+            id : this.user.id,
+            email : this.user.email
+        };
+
+        this.emitNewPost.emit(post);
     }
 }

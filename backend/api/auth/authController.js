@@ -69,8 +69,8 @@ function createSendToken(res, user) {
 
     var token = jwt.encode(payload, config.bcryptSecret)
     const userData = {
-        userEmail: user.email,
-        userId: user._id
+        email: user.email,
+        id: user._id
     }
 
     res.status(200).send({
@@ -97,8 +97,8 @@ let checkAuthenticated = (req, res, next) => {
         })
     }
 
-    req.userId = payload.sub
-    req.userEmail = payload.email
+    req.id = payload.sub
+    req.email = payload.email
 
     next()
 }

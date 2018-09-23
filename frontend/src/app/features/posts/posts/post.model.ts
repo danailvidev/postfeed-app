@@ -4,8 +4,8 @@ import { CommentModel } from './comments/comment.model';
 export class PostModel extends AbstractModel {
     content: string;
     createdBy: {
-        userId: string,
-        userEmail: string
+        id: string,
+        email: string
     };
     createdAt: Date = new Date();
     hidden: Boolean;

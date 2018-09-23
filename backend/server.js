@@ -14,6 +14,6 @@ require('./middleware/database')()
  app.use('/api', api)
 
 // socket.io
-//require('./middleware/socketio')(httpServer)
+require('./middleware/socketio')(httpServer)
 
 httpServer.listen(config.port || 3000)
