@@ -49,7 +49,6 @@ export class PostsListComponent implements OnInit {
         this.ioConnection = this.socketService.onMessage()
             .subscribe((post: any) => {
                 if (post) {
-                    Notificator.emit({ severity: 'info', summary: 'Info!', detail: 'New post just came' });
                     this.posts.unshift(post);
                 }
             });
