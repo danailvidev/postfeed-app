@@ -3,13 +3,13 @@
     <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
     <div class="pt-3 pb-3" style="position:relative">
         <input type="email" class="form-control" placeholder="Email address" formControlName="email" name="email"
-            (focus)="errorMessage = false" required autofocus>
+            (focus)="errorMessage = ''" required autofocus>
         <show-errors [control]="registerForm.controls.email" [ngClass]="{'show' : (registerForm.get('email').dirty || registerForm.get('email').touched) && registerForm.controls.email.errors}"></show-errors>
     </div>
 
     <div style="position:relative">
         <input type="password" class="form-control" placeholder="Password" formControlName="password" name="password"
-            (focus)="errorMessage = false" required>
+            (focus)="errorMessage = ''" required>
         <show-errors [control]="registerForm.controls.password" [ngClass]="{'show' : (registerForm.get('password').dirty || registerForm.get('password').touched) && registerForm.controls.password.errors}"></show-errors>
     </div>
     <div class="checkbox mb-3">

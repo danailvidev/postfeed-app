@@ -3,13 +3,13 @@
     <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
     <div class="pt-3 pb-3" style="position:relative">
         <input type="email" class="form-control" placeholder="Email address" formControlName="email" name="email"
-            (focus)="errorMessage = false" required autofocus>
+            (focus)="errorMessage = ''" required autofocus>
         <show-errors [control]="userform.controls.email" [ngClass]="{'show' : (userform.get('email').dirty || userform.get('email').touched) && userform.controls.email.errors}"></show-errors>
     </div>
 
     <div style="position:relative">
         <input type="password" class="form-control" placeholder="Password" formControlName="password" name="password"
-            (focus)="errorMessage = false" required>
+            (focus)="errorMessage = ''" required>
         <show-errors [control]="userform.controls.password" [ngClass]="{'show' : (userform.get('password').dirty || userform.get('password').touched) && userform.controls.password.errors}"></show-errors>
     </div>
 
